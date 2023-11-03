@@ -1,0 +1,37 @@
+.contactItem {
+  margin-bottom: 18px;
+  margin-top: 18px;
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+
+  font-size: 16px;
+  line-height: 1.17;
+  letter-spacing: 0.04em;
+  margin-bottom: 15px;
+}
+.deleteBtn {
+  width: 30px;
+  height: 20px;
+  border: 1px solid rgba(46, 47, 66, 0.4);
+  border-radius: 4px;
+  background-color: #ffffff;
+  align-items: center;
+
+  cursor: pointer;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  margin-left: 20px;
+
+  color: #8099a6;
+}
+.deleteBtn:hover,
+.deleteBtn:focus,
+.deleteBtn:active {
+  background-color: lightblue;
+}
+.svgHeart {
+  color: #8099a6;
+  margin-right: 8px;
+  width: 30px;
+  height: 20px;
+}

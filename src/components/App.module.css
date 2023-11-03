@@ -1,0 +1,21 @@
+.phoneBook {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.contactsTitle {
+  text-align: center;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+  color: #263238;
+  margin-bottom: 20px;
+}
+.contactsText {
+  font-size: 18px;
+  line-height: 1.17;
+  letter-spacing: 0.04em;
+  margin-bottom: 15px;
+}

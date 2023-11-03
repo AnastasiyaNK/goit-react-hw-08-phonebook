@@ -1,0 +1,11 @@
+.inputContacts {
+  width: 314px;
+  height: 40px;
+  border: 1px solid rgba(46, 47, 66, 0.4);
+  border-radius: 4px;
+  padding-left: 38px;
+
+  font-size: 14px;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+}
