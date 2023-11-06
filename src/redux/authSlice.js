@@ -14,7 +14,7 @@ export const registerThunk = createAsyncThunk(
   async (formData, thunkApi) => {
     try {
       const respons = await requestRegister(formData);
-      // { token: 'awdwda}, user: {name: "Oleg", email: "oleg@gmail.com"} }
+
       return respons;
     } catch (error) {
       if (error.response?.data.name === 'MongoError') {
@@ -34,7 +34,7 @@ export const loginThunk = createAsyncThunk(
   async (formData, thunkApi) => {
     try {
       const respons = await requestLogin(formData);
-      // { token: 'awdwda}, user: {name: "Oleg", email: "oleg@gmail.com"} }
+
       return respons;
     } catch (error) {
       toast(
@@ -62,7 +62,7 @@ export const usersCurrentThunk = createAsyncThunk(
     setToken(state.auth.token);
     try {
       const respons = await requestUsersCurrent();
-      // { name: "Oleg", email: "oleg@gmail.com" }
+
       return respons;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
