@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify';
 import {
   requestLogin,
   requestLogout,
@@ -16,6 +17,13 @@ export const registerThunk = createAsyncThunk(
       // { token: 'awdwda}, user: {name: "Oleg", email: "oleg@gmail.com"} }
       return respons;
     } catch (error) {
+      if (error.response?.data.name === 'MongoError') {
+        toast('Oops, user with this email already have an account!');
+      }
+      if (error.response?.data?.message) {
+        toast(error.response?.data?.message);
+      }
+
       return thunkApi.rejectWithValue(error.message);
     }
   }
@@ -29,6 +37,9 @@ export const loginThunk = createAsyncThunk(
       // { token: 'awdwda}, user: {name: "Oleg", email: "oleg@gmail.com"} }
       return respons;
     } catch (error) {
+      toast(
+        'Your credentials are wrong, please check your email or login one more time!'
+      );
       return thunkApi.rejectWithValue(error.message);
     }
   }
@@ -56,6 +67,15 @@ export const usersCurrentThunk = createAsyncThunk(
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
     }
+  },
+  {
+    condition: (_, thunkApi) => {
+      const state = thunkApi.getState();
+      const token = state.auth.token;
+      if (!token) return false;
+
+      return true;
+    },
   }
 );
 

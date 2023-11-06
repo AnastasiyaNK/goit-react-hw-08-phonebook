@@ -6,7 +6,7 @@ import { addContact } from 'redux/phoneBookSlice';
 
 export const ContactForm = () => {
   const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
+  const [number, setNumber] = useState('');
 
   const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
@@ -17,8 +17,8 @@ export const ContactForm = () => {
         setName(event.target.value);
         break;
       }
-      case 'phone': {
-        setPhone(event.target.value);
+      case 'number': {
+        setNumber(event.target.value);
         break;
       }
       default:
@@ -37,12 +37,12 @@ export const ContactForm = () => {
     }
     const newContact = {
       name,
-      phone,
+      number,
     };
     dispatch(addContact(newContact));
 
     setName('');
-    setPhone('');
+    setNumber('');
   };
 
   return (
@@ -64,9 +64,9 @@ export const ContactForm = () => {
           Number
           <input
             onChange={handleInputChange}
-            value={phone}
+            value={number}
             type="tel"
-            name="phone"
+            name="number"
             className={css.input}
             required
           />

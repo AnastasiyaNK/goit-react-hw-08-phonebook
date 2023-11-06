@@ -1,30 +1,50 @@
-import { Button } from '@mui/material';
 import ContactsPage from 'pages/ContactsPage';
 import LoginPage from 'pages/LoginPage';
 import RegisterPage from 'pages/RegisterPage';
-import React from 'react';
+import React, { useEffect } from 'react';
 
-import { NavLink, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
+import Navigation from './Navigation';
+import RestrictedRoute from './RestrictedRoute';
+import { useDispatch } from 'react-redux';
+import { usersCurrentThunk } from 'redux/authSlice';
+import PrivateRoute from './PrivateRoute';
 
 export const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(usersCurrentThunk());
+  }, [dispatch]);
+
   return (
     <div>
-      <header>
-        <NavLink to={'/contacts'}>
-          <Button>Contacts</Button>
-        </NavLink>
-        <Button variant="outlined">Log Out</Button>
-        <NavLink to={'/register'}>
-          <Button>Register</Button>
-        </NavLink>
-        <NavLink to={'/login'}>
-          <Button>Login</Button>
-        </NavLink>
-      </header>
+      <Navigation />
       <Routes>
-        <Route path="/contacts" element={<ContactsPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
+        <Route
+          path="/contacts"
+          element={
+            <PrivateRoute>
+              <ContactsPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <RestrictedRoute>
+              <LoginPage />
+            </RestrictedRoute>
+          }
+        />
+        <Route
+          path="/register"
+          element={
+            <RestrictedRoute>
+              <RegisterPage />
+            </RestrictedRoute>
+          }
+        />
       </Routes>
     </div>
   );

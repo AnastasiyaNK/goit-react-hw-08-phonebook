@@ -53,7 +53,7 @@ export const ContactList = () => {
             {contact.favourite && (
               <BsClipboard2Heart className={css.svgHeart} />
             )}
-            {contact.name}: {contact.phone}
+            {contact.name}: {contact.number}
             <button
               className={css.deleteBtn}
               onClick={() => handleDeleteContact(contact.id)}
