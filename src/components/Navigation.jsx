@@ -22,6 +22,9 @@ const Navigation = () => {
         </>
       ) : (
         <>
+          <NavLink to={'/'}>
+            <Button>Home</Button>
+          </NavLink>
           <NavLink to={'/register'}>
             <Button>Register</Button>
           </NavLink>

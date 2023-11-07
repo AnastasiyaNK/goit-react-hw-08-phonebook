@@ -8,7 +8,8 @@ import {
   selectFilter,
 } from 'redux/selectors';
 import { deleteContact, fetchContacts } from 'redux/phoneBookSlice';
-import { ThreeDots } from 'react-loader-spinner';
+
+import Loader from 'components/Home/Loader';
 
 export const ContactList = () => {
   const contacts = useSelector(selectContacts);
@@ -35,16 +36,7 @@ export const ContactList = () => {
     <ul>
       {isLoading && (
         <li className={css.contactItem}>
-          <ThreeDots
-            height="80"
-            width="80"
-            radius="9"
-            color="#4fa94d"
-            ariaLabel="three-dots-loading"
-            wrapperStyle={{}}
-            wrapperClassName=""
-            visible={true}
-          />
+          <Loader />
         </li>
       )}
       {filteredContactsByName.map(contact => {
